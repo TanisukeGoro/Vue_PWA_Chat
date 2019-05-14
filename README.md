@@ -1,4 +1,15 @@
-# md_chat2
+# チャットアプリ
+
+プロジェクトを作成したら`vue.config.js`をルートに作成して以下を追加
+```javascript
+module.exports = {
+    // options...
+    devServer: {
+        disableHostCheck: true
+    }
+}
+```
+
 
 ## Project setup
 ```
