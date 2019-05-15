@@ -2,12 +2,11 @@
   <div class="friends">
     <ul>
       <li v-for="user in userList" :key="user">
-        <!-- <router-link to="/talk:{{user}}">Abe Talk</router-link> | -->
-        <img src="" alt="">
-        <p @click="goTalk(user)">{{ user }}</p>
+        <p @click="goTalk(user, $route.params.myId)">{{ user }}</p>
       </li>
     </ul>
 
+    <!-- <p>{{ $route.params.myId }}</p> -->
   </div>
 </template>
 
@@ -23,16 +22,7 @@ export default {
       userList : [
         "Abe",
         "Tanaka",
-        "Ikeda",
-        "Abe",
-        "Tanaka",
-        "Ikeda",
-        "Abe",
-        "Tanaka",
-        "Ikeda",
-        "Abe",
-        "Tanaka",
-        "Ikeda",
+        "Ikeda"
       ]
     }
   },
@@ -40,9 +30,10 @@ export default {
     HelloWorld
   },
   methods: {
-    goTalk : (user)=>{
+    goTalk : (user, my)=>{
+      const myid = my.slice(1)
       // console.log(this)
-      router.push(`/talk:${user}`)
+      router.push(`/talk:${user}:${myid}`)
     }
   },
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Friends from './views/Friends.vue'
+import Home from './views/Home.vue'
 
 Vue.use(Router)
 
@@ -9,26 +9,26 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [{
             path: '/',
-            name: 'friends',
-            component: Friends
+            name: 'home',
+            // route level code-splitting
+            // this generates a separate chunk (about.[hash].js) for this route
+            // which is lazy-loaded when the route is visited.
+            component: Home
         },
         {
-            path: '/talk:userId',
+            path: '/friends:myId',
+            name: 'friends',
+            component: () =>
+                import ( /* webpackChunkName: "about" */ './views/Friends.vue')
+        },
+        {
+            path: '/talk:userId:myId',
             name: 'talk',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () =>
                 import ( /* webpackChunkName: "about" */ './views/Talk.vue')
-        },
-        {
-            path: '/test',
-            name: 'test',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () =>
-                import ( /* webpackChunkName: "about" */ './views/TEST.vue')
         }
     ]
 })

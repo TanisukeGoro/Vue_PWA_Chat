@@ -1,6 +1,6 @@
 <template>
   <div class="talk">
-    <p id="hoge">{{ $route.params.userId }}</p>
+    <p id="hoge">{{ $route.params.myId }}</p>
     <p @click="hoge">テスト</p>
     <ChatComp/>
   </div>
@@ -25,7 +25,7 @@ export default {
    hoge : ()=>{
     //  $route.params.userIdをJs側から読み取れないため。
      let test = document.getElementById('hoge');
-     console.log(test.innerText.slice(1));
+     console.log(test.innerText);
 
    }
  }, 

@@ -45,7 +45,7 @@
 .wave.-two {
   animation: drift 24000ms infinite linear;
   opacity: .1;
-  background: rgb(175, 219, 199);
+  background: #d5ec93;
 }
 
 .box:after {
