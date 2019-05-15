@@ -10,6 +10,11 @@ module.exports = {
 }
 ```
 
+## フォルダの構成
+./componentsフォルダ : コンポーネントを入れる
+./viewsフォルダ : 表示する画面の場所を設定
+router.js : ページ遷移先の設定
+
 
 ## Project setup
 ```

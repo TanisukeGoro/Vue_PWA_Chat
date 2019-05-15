@@ -1,12 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <div class="blank"></div>
+    <header id="nav">
+
+      <router-link to="/">Friends</router-link>
+      <!-- <router-link to="/talk">Talk</router-link> -->
+    </header> 
+     <!-- 波描画のコンポーネント化  -->
+    <WaveBG></WaveBG>
+    <!-- ページの遷移 -->
+    <router-view></router-view>
+  
+  
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import WaveBG from '@/components/Wavebackground.vue'
+
+export default {
+  name: 'waveBg',
+  components: {
+    WaveBG
+  }
+}
+
+
+</script>
+
 
 <style>
 #app {
@@ -16,16 +38,48 @@
   text-align: center;
   color: #2c3e50;
 }
+.blank{
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+header {
+  margin: 0;
+  height: 30px;
+  background-color: #73B8D6;
+  color: #ffffff;
+  left: 0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:24;
+}
+
+header span {
+  display: block;
+  position: relative;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: .02em;
+  font-weight: 400;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+
 #nav {
-  padding: 30px;
+  padding-top: 10px;
+  text-align: center;
 }
 
 #nav a {
+  padding-top: 10px;
   font-weight: bold;
-  color: #2c3e50;
+  color: #fff;
+  text-decoration	: none;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fff;
 }
+
 </style>
