@@ -2,16 +2,14 @@
   <div id="app">
     <div class="blank"></div>
     <header id="nav">
-
       <router-link to="/">Friends</router-link>
       <!-- <router-link to="/talk">Talk</router-link> -->
     </header> 
+
      <!-- 波描画のコンポーネント化  -->
     <WaveBG></WaveBG>
     <!-- ページの遷移 -->
     <router-view></router-view>
-  
-  
   </div>
 </template>
 

@@ -1,31 +1,49 @@
 <template>
     <div class="chat-form">
-        <div class="form-container">
-            <input type="text" class="message" v-model="message">
-            <button class="submit" @click="submit">送信</button>
+        <div class="form-container" id="hoge">
+
+          <label class=pic-btn>
+            <img src="../assets/picture.png" alt="" height="40" width="40">
+            <input type=file accept="image/*" capture>
+          </label> 
+
+          <textarea class="message" v-model="message" id="textarea" placeholder="メッセージを入力" :rows="rows"></textarea>
+
+          <button class="submit" @click="submit">
+            <img src="../assets/submit.png" alt="submit" height="40" width="40">
+          </button>
         </div>
     </div>
 </template>
 
 <script>
+import { constants } from 'crypto';
 export default {
-    props: {
-    applyEvent: {
-      type: String,
-      required: true
-    }
-  },
+  //   props: {
+  //   applyEvent: {
+  //     type: String,
+  //     required: true
+  //   }
+  // },
   data () {
     return {
       message: ''
+      // rows : 1
     }
   },
   methods: {
-    submit () {
-      this.$emit(this.applyEvent, this.message)
-      this.message = '';
+    submit :()=>{
+      console.log('dedede')
+      // this.$emit(this.applyEvent, this.message)
+      // this.message = '';
     }
-  }
+  },
+  // computed:{
+  //   rows:function(){
+  //       var num = this.value.split("\n").length;
+  //       return (num > 4) ? num : 4;
+  //   }
+  // }
 }
 </script>
 
@@ -40,32 +58,47 @@ button {
 }
 
 .form-container {
-  position: relative;
-  height: 40px;
+  position: fixed;
+  bottom :0px;
 }
 
 .form-container > .message {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 80px;
-    width: 100%;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    width: 260px;
+    max-height: 200px;
+    border-radius: 18px;
+    border : solid 2px #d3d3d3;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-size: 16px;
+    transform: scale(0.8);
+}
+textarea{
+  outline: none;
+}
+  
 
-    font-size: 1.3rem;
-    padding: 0 20px;
-    }
+input[type=text-area]:focus {
+    outline: none;
+}
 
 .form-container> .submit {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
-
-    width: 80px;
     text-align: center;
-    background-color: #4F83E1;
     color: white;
-    font-size: 1.6rem;
 }
+.form-container>.pic-btn {
+  font-size: 20px;
+  cursor:pointer
+  }
+.form-container>.pic-btn > input[type=file] {
+  position:absolute; 
+  overflow:hidden; 
+  width:1px; 
+  height:1px; 
+  opacity:0
+  }
+
 </style>

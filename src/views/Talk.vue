@@ -2,12 +2,14 @@
   <div class="talk">
     <p id="hoge">{{ $route.params.userId }}</p>
     <p @click="hoge">テスト</p>
+    <ChatComp/>
   </div>
 </template>
 
 
 
 <script>
+import ChatComp from '@/components/ChatComponent.vue'
 import router from '../router'
 
 export default {
@@ -15,6 +17,9 @@ export default {
     return {
       oppId : '',
     }
+  },
+  components: {
+    ChatComp
   },
   methods: {
    hoge : ()=>{
