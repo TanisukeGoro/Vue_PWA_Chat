@@ -1,0 +1,33 @@
+<template>
+  <div class="talk">
+    <p id="hoge">{{ $route.params.myId }}</p>
+    <p @click="hoge">テスト</p>
+    <ChatComp/>
+  </div>
+</template>
+
+
+
+<script>
+import ChatComp from '@/components/ChatComponent.vue'
+import router from '../router'
+
+export default {
+  data() {
+    return {
+      oppId : '',
+    }
+  },
+  components: {
+    ChatComp
+  },
+  methods: {
+   hoge : ()=>{
+    //  $route.params.userIdをJs側から読み取れないため。
+     let test = document.getElementById('hoge');
+     console.log(test.innerText);
+
+   }
+ }, 
+}
+</script>
