@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home_page</h1>
+    <h1>Home</h1>
 
     <ul>
       <li class="selectMe" v-for="(user, i) in userList" :key="user">
@@ -17,22 +17,27 @@
 
 <script>
 import router from '../router'
-import db from '../myfirestore'
+// import db from '../myfirestore'
+import firebase from '../myfirestore'
+
 export default {
   name: 'home',
   data () {
     return {
       userList : [],
       userListicon : [],
+      db : '',
+
     }
   },
   mounted:function() {
-    console.log(this);
+    this.db = firebase.firestore();
+
+    // console.log(this);
     let a = [];
     let b = []
-    db.collection("UserList").get().then(function(querySnapshot) {
+    this.db.collection("UserList").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
           a.push(doc.id);
           b.push(doc.data().userIcon);
       });
@@ -51,7 +56,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 ul{
   margin: 0;
   padding: 0;

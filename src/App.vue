@@ -2,6 +2,7 @@
   <div id="app">
     <div class="blank"></div>
     <header id="nav">
+      <p @click="backhistory" style="display:inline"> ⇦ </p>
       <router-link to="/">Friends</router-link>
       <!-- <router-link to="/talk">Talk</router-link> -->
     </header> 
@@ -16,12 +17,18 @@
 <script>
 // @ is an alias to /src
 import WaveBG from '@/components/Wavebackground.vue'
+import router from './router'
 
 export default {
   name: 'waveBg',
   components: {
     WaveBG
-  }
+  },
+  methods: {
+    backhistory: function(){
+      router.go(-1);
+    }
+  },
 }
 
 

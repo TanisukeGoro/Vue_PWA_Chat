@@ -7,7 +7,7 @@
             <input type=file accept="image/*" capture>
           </label> 
 
-          <textarea class="message" v-model="message" id="textarea" placeholder="メッセージを入力" :rows="rows"></textarea>
+          <textarea class="message" v-model="message" id="textarea" placeholder="メッセージを入力" ></textarea>
 
           <button class="submit" @click="submit">
             <img src="../assets/submit.png" alt="submit" height="40" width="40">
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import { constants } from 'crypto';
+import router from '../router'
+
 export default {
   //   props: {
   //   applyEvent: {
@@ -27,16 +28,25 @@ export default {
   // },
   data () {
     return {
-      message: ''
+      message: '',
+      textElem : ''
       // rows : 1
     }
   },
+  mounted() {
+    this.textElem = document.getElementById('textarea');
+  },
   methods: {
-    submit :()=>{
-      console.log('dedede')
-      // this.$emit(this.applyEvent, this.message)
-      // this.message = '';
-    }
+    submit :function(){
+      console.log(this.textElem.value);
+
+      this.message = '';
+    },
+    scrollBottom: function(){
+      this.$nextTick(() => {
+        window.scrollTo(0, document.body.clientHeight)
+      })
+    },
   },
   // computed:{
   //   rows:function(){
@@ -100,5 +110,8 @@ input[type=text-area]:focus {
   height:1px; 
   opacity:0
   }
+  .talktitle{
+  font-size: 14px;
+}
 
 </style>
